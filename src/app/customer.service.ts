@@ -20,7 +20,7 @@ export class CustomerService {
   }
 
   createUser(customer: Customer) {
-    console.log(customer.customerFullName);
+    console.log(customer);
     return this.http.post(this.baseUrl+'acceptCustomerDetails', customer,httpOptions);
   }
   updateUser(customer: Customer) {

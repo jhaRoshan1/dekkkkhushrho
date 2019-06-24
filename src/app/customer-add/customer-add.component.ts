@@ -1,44 +1,8 @@
-// import { Component, OnInit } from '@angular/core';
-// import {CustomerService} from "../customer.service";
-// import {Router} from "@angular/router";
-// import { Customer } from '../customer';
-// import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-// @Component({
-//   selector: 'app-customer-add',
-//   templateUrl: './customer-add.component.html',
-//   styleUrls: ['./customer-add.component.css',],
-// })
-// export class CustomerAddComponent implements OnInit{
-//   customer: Customer=new Customer();
-
-//   constructor(private formBuilder: FormBuilder,private router: Router, private customerService: CustomerService) { }
-//    addForm: FormGroup;
-   
-//    ngOnInit() {
-//      this.addForm=this.formBuilder.group({
-//       emailAddress: ['',Validators.required],
-//       customerFullName: ['',Validators.required],
-//       password: ['',Validators.required],
-//       phoneNumber: ['',Validators.required],
-//       address: ['',Validators.required],
-//       city: ['',Validators.required],
-//       zipCode: ['',Validators.required],
-//       country: ['',Validators.required],
-//      });
-//     }
-//    createUser(): void{
-//     this.customerService.createUser(this.customer).subscribe(data =>{
-//       alert("Customer created successfully");
-//     });
-// };
-// }
-
-
 import { Component, OnInit } from '@angular/core';
 import {CustomerService} from "../customer.service";
 import {Router} from "@angular/router";
 import { Customer } from '../customer';
-import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 @Component({
   selector: 'app-customer-add',
   templateUrl: './customer-add.component.html',
@@ -46,25 +10,40 @@ import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 })
 export class CustomerAddComponent implements OnInit{
   customer: Customer=new Customer();
-  form =new FormGroup({
-    emailAddress: new FormControl('',Validators.required),
-      customerFullName: new FormControl('',Validators.required),
-      password: new FormControl('',Validators.required),
-      phoneNumber: new FormControl('',Validators.required),
-      address: new FormControl('',Validators.required),
-      city: new FormControl('',Validators.required),
-      zipCode:new FormControl('',Validators.required),
-      country: new FormControl('',Validators.required),
-  })
+  creatForm: FormGroup;
+
   constructor(private formBuilder: FormBuilder,private router: Router, private customerService: CustomerService) { }
-   addForm: FormGroup;
+  
    
    ngOnInit() {
+     this.creatForm=this.formBuilder.group({
+      emailAddress: ['',Validators.required],
+      customerFullName: ['',Validators.required],
+      password: ['',Validators.required],
+      phoneNumber: ['',Validators.required],
+      address: ['',Validators.required],
+      city: ['',Validators.required],
+      zipCode: ['',Validators.required],
+      country: ['',Validators.required],
+     });
      
     }
    createUser(): void{
-    this.customerService.createUser(this.customer).subscribe(data =>{
+     console.log(this.creatForm.value);
+    if(!this.creatForm.invalid){
+    this.customerService.createUser(this.creatForm.value).subscribe(data =>{
       alert("Customer created successfully");
+      this.router.navigate(['']);
     });
-};
 }
+else{
+  alert("Enter all the details");
+  this.router.navigate(['']);
+}
+}
+}
+
+
+
+
+

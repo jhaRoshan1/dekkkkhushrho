@@ -10,7 +10,7 @@
       <th>city</th>
       <th>zipCode</th>
       <th>country</th>
-     
+      <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +21,8 @@
       <td>{{customer.city}}</td>
       <td>{{customer.zipCode}}</td>
       <td>{{customer.country}}</td>
+      <td><button class="btn btn-danger" (click)="deleteUser(user)"> Delete</button>
+        <button class="btn btn-danger" (click)="editUser(user)" style="margin-left: 20px;"> Edit</button></td>
     </tr>
     </tbody>
   </table>

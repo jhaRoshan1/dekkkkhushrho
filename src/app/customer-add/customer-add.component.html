@@ -1,4 +1,4 @@
-<div class="flex flex--wrap">
+ <!-- <div class="flex flex--wrap">
   <div class="u-1/1-desk u-1/1-lap u-1/1-palm">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -8,44 +8,44 @@
           <div class="modal-body">
             <div class="form-group">
               <label for="countryName">Customer Full Name </label>
-              <input type="text" class="form-control" id="customerFullName" [(ngModel)]="customer.customerFullName" name="countryName" placeholder="ANY COUNTRY"
+              <input type="text" class="form-control" id="customerFullName" [(ngModel)]="customer.customerFullName" name="countryName"  placeholder="ANY NAME"
                 >
                
             </div>
 
             <div class="form-group">
               <label for="capital">Email Address </label>
-              <input type="email" class="form-control" id="emailAddress" [(ngModel)]="customer.emailAddress" name="capital" placeholder="ANY CAPITAL" >
+              <input type="email" class="form-control" id="emailAddress" [(ngModel)]="customer.emailAddress" name="capital"  placeholder="ANY EMAIL ADDRESS" >
             </div>
 
             <div class="form-group">
               <label for="capital">Password</label>
-              <input type="password" class="form-control" id="password" [(ngModel)]="customer.password" name="capital" placeholder="ANY CAPITAL" >
+              <input type="password" class="form-control" id="password" [(ngModel)]="customer.password" name="capital" placeholder="ANY PASSWORD" >
             </div>
 
             <div class="form-group">
               <label for="capital">Phone Number </label>
-              <input type="number" class="form-control" id="phoneNumber" [(ngModel)]="customer.phoneNumber" name="capital" placeholder="ANY CAPITAL" >
+              <input type="number" class="form-control" id="phoneNumber" [(ngModel)]="customer.phoneNumber" name="capital" placeholder="ANY PHONE Number" >
             </div>
 
             <div class="form-group">
               <label for="capital">Address </label>
-              <input type="text" class="form-control" id="address" [(ngModel)]="customer.address" name="capital" placeholder="ANY CAPITAL">
+              <input type="text" class="form-control" id="address" [(ngModel)]="customer.address" name="capital" placeholder="ANY ADDRESS">
             </div>
 
             <div class="form-group">
               <label for="capital">city </label>
-              <input type="text" class="form-control" id="city" [(ngModel)]="customer.city" name="capital" placeholder="ANY CAPITAL">
+              <input type="text" class="form-control" id="city" [(ngModel)]="customer.city" name="capital"  placeholder="ANY city">
             </div>
 
             <div class="form-group">
               <label for="capital">ZipCode </label>
-              <input type="number" class="form-control" id="zipCode" [(ngModel)]="customer.zipCode" name="capital" placeholder="ANY CAPITAL">
+              <input type="number" class="form-control" id="zipCode" [(ngModel)]="customer.zipCode" name="capital" placeholder="ANY ZipCode">
             </div>
 
             <div class="form-group">
               <label for="capital">Country </label>
-              <input type="text" class="form-control" id="country" [(ngModel)]="customer.country" name="capital" placeholder="ANY CAPITAL">
+              <input type="text" class="form-control" id="country" [(ngModel)]="customer.country" name="capital" placeholder="ANY COUNTRY">
             </div>
 
           </div>
@@ -55,4 +55,73 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>  -->
+
+
+ <form [formGroup]="creatForm">
+  <div class="flex flex--wrap">
+    <div class="u-1/1-desk u-1/1-lap u-1/1-palm">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Customer Registration</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="countryName">Customer Full Name </label>
+                <input type="text" class="form-control" id="customerFullName" name="countryName"  placeholder="ANY NAME" [formControl]="creatForm.controls.customerFullName"> 
+                  <span *ngIf="creatForm.controls.customerFullName.invalid && creatForm.controls.customerFullName.touched" style="color:royalblue">ENTER NAME</span>
+                 
+              </div>
+  
+              <div class="form-group">
+                <label for="capital">Email Address </label>
+                <input type="email" class="form-control" id="emailAddress" name="capital"  placeholder="ANY EMAIL ADDRESS" [formControl]="creatForm.controls.emailAddress"  >
+                <span *ngIf="creatForm.controls.emailAddress.invalid && creatForm.controls.emailAddress.touched" style="color:royalblue">ENTER EMAIL ADDRESS</span>
+              </div>
+  
+              <div class="form-group">
+                <label for="capital">Password</label>
+                <input type="password" class="form-control" id="password" name="capital" placeholder="ANY PASSWORD" [formControl]="creatForm.controls.password"  >
+                <span *ngIf="creatForm.controls.password.invalid && creatForm.controls.password.touched" style="color:royalblue">ENTER PASSWORD</span>
+              </div>
+  
+              <div class="form-group">
+                <label for="capital">Phone Number </label>
+                <input type="number" class="form-control" id="phoneNumber" name="capital"pattern="[0-9]{10}" placeholder="ANY PHONE Number" [formControl]="creatForm.controls.phoneNumber"  >
+                <span *ngIf="creatForm.controls.phoneNumber.invalid && creatForm.controls.phoneNumber.touched" style="color:royalblue">ENTER PHONE NUMBER</span>
+              </div>
+  
+              <div class="form-group">
+                <label for="capital">Address </label>
+                <input type="text" class="form-control" id="address" name="capital" placeholder="ANY ADDRESS" [formControl]="creatForm.controls.address" name="capital" placeholder="ANY ADDRESS">
+                <span *ngIf="creatForm.controls.address.invalid && creatForm.controls.address.touched" style="color:royalblue">ENTER ADDRESS</span>
+              </div>
+  
+              <div class="form-group">
+                <label for="capital">city </label>
+                <input type="text" class="form-control" id="city"name="capital"  placeholder="ANY city" [formControl]="creatForm.controls.city" >
+                <span *ngIf="creatForm.controls.city.invalid && creatForm.controls.city.touched" style="color:royalblue">ENTER CITY</span>
+              </div>
+  
+              <div class="form-group">
+                <label for="capital">ZipCode </label>
+                <input type="number" class="form-control" id="zipCode"name="capital" placeholder="ANY ZipCode" [formControl]="creatForm.controls.zipCode" >
+                <span *ngIf="creatForm.controls.zipCode.invalid && creatForm.controls.zipCode.touched"style="color:royalblue">ENTER ZIPCODE</span>
+              </div>
+  
+              <div class="form-group">
+                <label for="capital">Country </label>
+                <input type="text" class="form-control" id="country"name="capital" placeholder="ANY COUNTRY" [formControl]="creatForm.controls.country" >
+                <span *ngIf="creatForm.controls.country.invalid && creatForm.controls.country.touched" style="color:royalblue">ENTER COUNTRY NAME</span>
+              </div>
+  
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-success" align='left' (click)="createUser()" >Create user</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form> 
